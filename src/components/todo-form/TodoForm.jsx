@@ -6,7 +6,6 @@ const TodoForm = ({ task, setTask, taskList, setTaskList }) => {
 
   const handleInput = (e) => {
     const eventValue = e.target.value;
-    console.log(eventValue);
 
     setTask({ ...task, name: eventValue });
   };
@@ -19,9 +18,21 @@ const TodoForm = ({ task, setTask, taskList, setTaskList }) => {
   const handleForm = (e) => {
     e.preventDefault();
 
-    setTaskList([...taskList, task]);
+    /* Not empty values in input */
+    if (task.name === "") return;
 
-    setTask({ ...task, name: "" });
+    /* Not the same task name */
+    const sameTask = taskList.some((taskInList) => {
+      const { name } = task;
+      return taskInList.name === name;
+    });
+
+    /* If isn't the same do... */
+    if (!sameTask) {
+      setTaskList([...taskList, task]);
+
+      setTask({ ...task, name: "" });
+    }
   };
 
   return (
