@@ -1,13 +1,13 @@
+import { useState } from "react";
+
 const TodoTask = ({ taskName, taskList, setTaskList }) => {
   const handleCheckbox = (e) => {
     const checkValue = e.target.checked;
 
-    /* Find the same the same task name in the array  */
+    /* Find the same task name in the array  */
 
     setTaskList((prevTaskList) => {
       const findIndex = prevTaskList.find(({ name }) => name === taskName);
-
-      console.log(findIndex);
 
       return [
         ...prevTaskList.map((task) => {
@@ -22,15 +22,36 @@ const TodoTask = ({ taskName, taskList, setTaskList }) => {
   };
 
   const handleDeleteBtn = () => {
-    console.log(taskName);
-    console.log();
-
-    console.log(taskList);
     setTaskList((prevTaskList) => {
       return prevTaskList.filter(({ name }) => name !== taskName);
     });
   };
 
+  const [eBStyles, setEBStyles] = useState({ display: "none" });
+
+  const [editTaskN, setEditTaskN] = useState(taskName);
+
+  const handleEditBtn = () => {
+    console.log(editTaskN);
+    console.log(taskName);
+    setEBStyles({ ...eBStyles, display: "block" });
+  };
+
+  console.log(editTaskN);
+
+  const handleEditCancelBtn = () => {};
+  const handleEditAcceptBtn = () => {
+    setTaskList((prevTaskList) =>
+      prevTaskList.map((task) => {
+        const { name, state } = task;
+
+        if (name === taskName) {
+          return { ...task, name: editTaskN };
+        }
+        return task;
+      })
+    );
+  };
   return (
     <>
       <div>
@@ -41,9 +62,21 @@ const TodoTask = ({ taskName, taskList, setTaskList }) => {
           id="checkTask"
         />
         <div>
+          <div>
+            <input
+              style={eBStyles}
+              value={editTaskN}
+              onChange={(e) => setEditTaskN(e.target.value)}
+              type="text"
+            />
+            <div style={eBStyles}>
+              <button onClick={handleEditAcceptBtn}>Accept</button>
+              <button>Cancel</button>
+            </div>
+          </div>
           <strong>{taskName}</strong>
           <div>
-            <button>Edit</button>
+            <button onClick={handleEditBtn}>Edit</button>
             <button onClick={handleDeleteBtn}>Delete</button>
           </div>
         </div>
