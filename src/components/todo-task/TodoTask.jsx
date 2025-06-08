@@ -38,12 +38,10 @@ const TodoTask = ({ taskName, taskList, setTaskList }) => {
   };
 
   console.log(editTaskN);
-
-  const handleEditCancelBtn = () => {};
   const handleEditAcceptBtn = () => {
     const sameTask = taskList.some(({ name }) => editTaskN === name);
 
-    /* The task is different */
+    /* if the task is different */
     if (!sameTask) {
       setTaskList((prevTaskList) =>
         prevTaskList.map((task) => {
@@ -55,8 +53,16 @@ const TodoTask = ({ taskName, taskList, setTaskList }) => {
           return task;
         })
       );
-    }
+      /* Si es la misma tarea, no quites el panel de edicion */
+    } else return;
+
+    // setTimeout(() => {}, [500]);
+    setEBStyles({ ...eBStyles, display: "none" });
   };
+  const handleEditCancelBtn = () => {
+    setEBStyles({ ...eBStyles, display: "none" });
+  };
+
   return (
     <>
       <div>
@@ -76,7 +82,7 @@ const TodoTask = ({ taskName, taskList, setTaskList }) => {
             />
             <div style={eBStyles}>
               <button onClick={handleEditAcceptBtn}>Accept</button>
-              <button>Cancel</button>
+              <button onClick={handleEditCancelBtn}>Cancel</button>
             </div>
           </div>
           <strong>{taskName}</strong>
