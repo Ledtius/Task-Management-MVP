@@ -41,16 +41,21 @@ const TodoTask = ({ taskName, taskList, setTaskList }) => {
 
   const handleEditCancelBtn = () => {};
   const handleEditAcceptBtn = () => {
-    setTaskList((prevTaskList) =>
-      prevTaskList.map((task) => {
-        const { name, state } = task;
+    const sameTask = taskList.some(({ name }) => editTaskN === name);
 
-        if (name === taskName) {
-          return { ...task, name: editTaskN };
-        }
-        return task;
-      })
-    );
+    /* The task is different */
+    if (!sameTask) {
+      setTaskList((prevTaskList) =>
+        prevTaskList.map((task) => {
+          const { name, state } = task;
+
+          if (name === taskName) {
+            return { ...task, name: editTaskN };
+          }
+          return task;
+        })
+      );
+    }
   };
   return (
     <>

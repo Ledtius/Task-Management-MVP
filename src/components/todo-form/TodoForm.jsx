@@ -7,7 +7,7 @@ const TodoForm = ({ task, setTask, taskList, setTaskList }) => {
   const handleInput = (e) => {
     const eventValue = e.target.value;
 
-    setTask({ ...task, name: eventValue });
+    setTask({ ...task, id: crypto.randomUUID(), name: eventValue });
   };
 
   useEffect(() => {

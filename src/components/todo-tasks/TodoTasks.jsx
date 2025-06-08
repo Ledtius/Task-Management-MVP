@@ -4,12 +4,12 @@ const TodoTasks = ({ task, setTask, taskList, setTaskList }) => {
   return (
     <>
       <div></div>
-      {taskList.map(({ name }) => (
+      {taskList.map(({ id, name }) => (
         <TodoTask
           taskName={name}
           taskList={taskList}
           setTaskList={setTaskList}
-          key={name}
+          key={id}
         />
       ))}
     </>

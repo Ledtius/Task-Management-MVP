@@ -5,7 +5,12 @@ import TodoForm from "./components/todo-form/TodoForm.jsx";
 import TodoTasks from "./components/todo-tasks/TodoTasks.jsx";
 
 const TodoApp = () => {
-  const [task, setTask] = useState({ name: "", state: false });
+  const [task, setTask] = useState({
+    id: 0,
+    name: "",
+    state: false,
+  });
+  console.log(task);
 
   const [taskList, setTaskList] = useState([]);
 
