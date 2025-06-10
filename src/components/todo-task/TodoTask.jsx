@@ -36,6 +36,7 @@ const TodoTask = ({ taskName, taskList, setTaskList }) => {
     console.log(taskName);
     setEBStyles({ ...eBStyles, display: "block" });
   };
+  
 
   console.log(editTaskN);
   const handleEditAcceptBtn = () => {

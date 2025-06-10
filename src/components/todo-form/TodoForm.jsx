@@ -27,10 +27,14 @@ const TodoForm = ({ task, setTask, taskList, setTaskList }) => {
       return taskInList.name === name;
     });
 
+    const saveTask = (taskList) => {
+      localStorage.setItem("taskList", JSON.stringify(taskList));
+    };
+
     /* If isn't the same do... */
     if (!sameTask) {
       setTaskList([...taskList, task]);
-
+      saveTask(taskList);
       setTask({ ...task, name: "" });
     }
   };
