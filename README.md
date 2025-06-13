@@ -1,12 +1,30 @@
-# React + Vite
+---
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📖 The Journey Behind This MVP
 
-Currently, two official plugins are available:
+Over the last 2 months, I worked on building my first real-world React project: a task management app.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+At first, I completed the design and styles. But when I started implementing the logic, I struggled. The problem?  
+- I didn't have a solid foundation in modern JavaScript (spread operator, array/object methods, etc.)
+- I was just starting to learn React and hadn’t fully internalized key concepts like:
+  - Hooks (`useState`, `useEffect`)
+  - Props and component communication
+  - Lifting state up
+  - Handling events
+  - Controlled inputs
+  - Basic project structure
 
-## Expanding the ESLint configuration
+But I **did not give up**. I studied, practiced, broke the code many times — and rebuilt it.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Today, this MVP represents not just a small project — it represents the foundation of my growth as a frontend developer.
+
+---
+
+## 📂 Previous Version
+
+You can also see my early steps and struggles in React in my first repository:  
+[Task Management - First Steps in React and JS Exercises](https://github.com/Ledtius/Task-Management-First-Steps-in-React-and-JS-Exercises)
+
+---
+
+✅ **If I could do it, you can too. Keep going.**
