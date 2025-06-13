@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 
-const TodoForm = ({ task, setTask, taskList, setTaskList }) => {
+const TodoForm = ({ task, setTask, taskList, setTaskList, saveTask }) => {
   const { name } = task;
 
   const handleInput = (e) => {
@@ -12,8 +12,10 @@ const TodoForm = ({ task, setTask, taskList, setTaskList }) => {
 
   useEffect(() => {
     console.log(task);
+    saveTask(taskList);
+
     console.log(taskList);
-  }, [task, taskList]);
+  }, [task]);
 
   const handleForm = (e) => {
     e.preventDefault();
@@ -27,14 +29,11 @@ const TodoForm = ({ task, setTask, taskList, setTaskList }) => {
       return taskInList.name === name;
     });
 
-    const saveTask = (taskList) => {
-      localStorage.setItem("taskList", JSON.stringify(taskList));
-    };
-
     /* If isn't the same do... */
     if (!sameTask) {
-      setTaskList([...taskList, task]);
+      setTaskList(() => [...taskList, task]);
       saveTask(taskList);
+
       setTask({ ...task, name: "" });
     }
   };

@@ -1,22 +1,26 @@
 import TodoTask from "../todo-task/TodoTask.jsx";
 
-const TodoTasks = ({ task, setTask, taskList, setTaskList }) => {
-  const recoveryData = () => {
-    const value = JSON.parse(localStorage.getItem("taskList")) || [];
-    console.log(value);
-    return value;
-  };
+const TodoTasks = ({
+  task,
+  setTask,
+  taskList,
+  setTaskList,
+  saveTask,
+  recoveryTasks,
+}) => {
+  let recoveryVariable;
 
   return (
     <>
       <div></div>
-      {recoveryData().map(({ id, name }) => {
+      {taskList.map(({ id, name }) => {
         return (
           <TodoTask
             taskName={name}
             taskList={taskList}
             setTaskList={setTaskList}
             key={id}
+            saveTask={saveTask}
           />
         );
       })}

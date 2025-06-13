@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { useEffect } from "react";
 import TodoForm from "./components/todo-form/TodoForm.jsx";
 
 import TodoTasks from "./components/todo-tasks/TodoTasks.jsx";
@@ -12,7 +12,23 @@ const TodoApp = () => {
   });
   console.log(task);
 
-  const [taskList, setTaskList] = useState([]);
+  /* Localstorage */
+
+  const saveTask = (taskList) => {
+    localStorage.setItem("taskList", JSON.stringify(taskList));
+  };
+
+  const recoveryTasks = () => {
+    const value = JSON.parse(localStorage.getItem("taskList")) || [];
+
+    return value;
+  };
+
+  const [taskList, setTaskList] = useState(() => {
+    const recoveryStorage = JSON.parse(localStorage.getItem("taskList"));
+
+    return recoveryStorage ? recoveryStorage : [];
+  });
 
   return (
     <>
@@ -21,6 +37,7 @@ const TodoApp = () => {
         setTask={setTask}
         taskList={taskList}
         setTaskList={setTaskList}
+        saveTask={saveTask}
       />
 
       <TodoTasks
@@ -28,6 +45,8 @@ const TodoApp = () => {
         setTask={setTask}
         taskList={taskList}
         setTaskList={setTaskList}
+        saveTask={saveTask}
+        recoveryTasks={recoveryTasks}
       />
     </>
   );

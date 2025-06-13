@@ -1,25 +1,32 @@
 import { useState } from "react";
+import { useEffect } from "react";
 
-const TodoTask = ({ taskName, taskList, setTaskList }) => {
+const TodoTask = ({ taskName, taskList, setTaskList, saveTask }) => {
   const handleCheckbox = (e) => {
     const checkValue = e.target.checked;
 
     /* Find the same task name in the array  */
-
     setTaskList((prevTaskList) => {
       const findIndex = prevTaskList.find(({ name }) => name === taskName);
-
+      console.log(findIndex);
       return [
         ...prevTaskList.map((task) => {
-          const { name, state } = task;
+          const { id, name, state } = task;
           if (findIndex === task) {
-            return { name, state: checkValue };
+            return { id, name, state: checkValue };
           }
           return task;
         }),
       ];
     });
   };
+
+  const findState = taskList.find(({ name }) => name === taskName);
+
+  /* Find the state per task for the initial value in the checkbox */
+  // const handleCheckboxState = () => {
+
+  // };
 
   const handleDeleteBtn = () => {
     setTaskList((prevTaskList) => {
@@ -36,7 +43,6 @@ const TodoTask = ({ taskName, taskList, setTaskList }) => {
     console.log(taskName);
     setEBStyles({ ...eBStyles, display: "block" });
   };
-  
 
   console.log(editTaskN);
   const handleEditAcceptBtn = () => {
@@ -63,12 +69,18 @@ const TodoTask = ({ taskName, taskList, setTaskList }) => {
   const handleEditCancelBtn = () => {
     setEBStyles({ ...eBStyles, display: "none" });
   };
+  useEffect(() => {
+    saveTask(taskList);
+
+    console.log(taskList);
+  }, [taskList]);
 
   return (
     <>
       <div>
         <input
-          onClick={handleCheckbox}
+          onChange={handleCheckbox}
+          checked={findState.state}
           type="checkbox"
           name="checkTask"
           id="checkTask"
