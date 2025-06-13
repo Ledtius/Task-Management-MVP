@@ -6,38 +6,23 @@ import TodoForm from "./components/todo-form/TodoForm.jsx";
 import TodoTasks from "./components/todo-tasks/TodoTasks.jsx";
 
 const TodoApp = () => {
-  /* Localstorage */
-
-  const saveTask = (taskList) => {
-    localStorage.setItem("taskList", JSON.stringify(taskList));
-  };
-
-  const recoveryTasks = () => {
-    const value = JSON.parse(localStorage.getItem("taskList")) || [];
-
-    return value;
-  };
-
+  /* Lazy initialization  */
   const [taskList, setTaskList] = useState(() => {
-    const recoveryStorage = JSON.parse(localStorage.getItem("taskList"));
+    const recoveryStorage = JSON.parse(localStorage.getItem("tasks"));
 
     return recoveryStorage ? recoveryStorage : [];
   });
 
-  useEffect(() => {}, [taskList]);
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(taskList));
+    console.log(taskList);
+  }, [taskList]);
 
   return (
     <>
       <TodoForm taskList={taskList} setTaskList={setTaskList} />
 
-      <TodoTasks
-        task={task}
-        setTask={setTask}
-        taskList={taskList}
-        setTaskList={setTaskList}
-        saveTask={saveTask}
-        recoveryTasks={recoveryTasks}
-      />
+      <TodoTasks taskList={taskList} setTaskList={setTaskList} />
     </>
   );
 };

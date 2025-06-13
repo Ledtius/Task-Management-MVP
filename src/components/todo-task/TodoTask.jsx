@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 
-const TodoTask = ({ taskName, taskList, setTaskList, saveTask }) => {
+const TodoTask = ({ taskName, taskList, setTaskList }) => {
   const handleCheckbox = (e) => {
     const checkValue = e.target.checked;
 
@@ -70,8 +70,6 @@ const TodoTask = ({ taskName, taskList, setTaskList, saveTask }) => {
     setEBStyles({ ...eBStyles, display: "none" });
   };
   useEffect(() => {
-    saveTask(taskList);
-
     console.log(taskList);
   }, [taskList]);
 

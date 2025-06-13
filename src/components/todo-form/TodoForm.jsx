@@ -18,7 +18,6 @@ const TodoForm = ({ taskList, setTaskList }) => {
 
   useEffect(() => {
     console.log(task);
-    saveTask(taskList);
 
     console.log(taskList);
   }, [task]);
@@ -38,7 +37,6 @@ const TodoForm = ({ taskList, setTaskList }) => {
     /* If isn't the same do... */
     if (!sameTask) {
       setTaskList(() => [...taskList, task]);
-      saveTask(taskList);
 
       setTask({ ...task, name: "" });
     }

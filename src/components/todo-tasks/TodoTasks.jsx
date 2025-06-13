@@ -1,13 +1,6 @@
 import TodoTask from "../todo-task/TodoTask.jsx";
 
-const TodoTasks = ({
-  task,
-  setTask,
-  taskList,
-  setTaskList,
-  saveTask,
-  recoveryTasks,
-}) => {
+const TodoTasks = ({ taskList, setTaskList }) => {
   let recoveryVariable;
 
   return (
@@ -20,7 +13,6 @@ const TodoTasks = ({
             taskList={taskList}
             setTaskList={setTaskList}
             key={id}
-            saveTask={saveTask}
           />
         );
       })}
