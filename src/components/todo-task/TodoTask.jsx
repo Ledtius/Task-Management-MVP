@@ -1,74 +1,49 @@
 import { useState } from "react";
 import { useEffect } from "react";
 
-const TodoTask = ({ taskName, taskList, setTaskList }) => {
-  const handleCheckbox = (e) => {
-    const checkValue = e.target.checked;
-
-    /* Find the same task name in the array  */
-    setTaskList((prevTaskList) => {
-      const findIndex = prevTaskList.find(({ name }) => name === taskName);
-      console.log(findIndex);
-      return [
-        ...prevTaskList.map((task) => {
-          const { id, name, state } = task;
-          if (findIndex === task) {
-            return { id, name, state: checkValue };
-          }
-          return task;
-        }),
-      ];
-    });
-  };
-
-  const findState = taskList.find(({ name }) => name === taskName);
-
-  /* Find the state per task for the initial value in the checkbox */
-  // const handleCheckboxState = () => {
-
-  // };
-
-  const handleDeleteBtn = () => {
-    setTaskList((prevTaskList) => {
-      return prevTaskList.filter(({ name }) => name !== taskName);
-    });
-  };
-
+const TodoTask = ({ taskId, taskName, taskState, taskList, setTaskList }) => {
   const [eBStyles, setEBStyles] = useState({ display: "none" });
 
   const [editTaskN, setEditTaskN] = useState(taskName);
 
+  const handleCheckbox = (e) => {
+    const checkValue = e.target.checked;
+
+    setTaskList((prevTaskList) => {
+      console.log(prevTaskList);
+      return prevTaskList.map((task) => {
+        if (task.id === taskId) return { ...task, state: checkValue };
+        return task;
+      });
+    });
+  };
+
+  const handleDeleteBtn = () => {
+    setTaskList((prevTaskList) => {
+      return prevTaskList.filter(({ id }) => id !== taskId);
+    });
+  };
+
   const handleEditBtn = () => {
-    console.log(editTaskN);
-    console.log(taskName);
     setEBStyles({ ...eBStyles, display: "block" });
   };
 
   console.log(editTaskN);
   const handleEditAcceptBtn = () => {
-    const sameTask = taskList.some(({ name }) => editTaskN === name);
+    setTaskList((prevTaskList) =>
+      prevTaskList.map((task) => {
+        if (task.id === taskId) return { ...task, name: editTaskN };
+        return task;
+      })
+    );
 
-    /* if the task is different */
-    if (!sameTask) {
-      setTaskList((prevTaskList) =>
-        prevTaskList.map((task) => {
-          const { name, state } = task;
-
-          if (name === taskName) {
-            return { ...task, name: editTaskN };
-          }
-          return task;
-        })
-      );
-      /* Si es la misma tarea, no quites el panel de edicion */
-    } else return;
-
-    // setTimeout(() => {}, [500]);
     setEBStyles({ ...eBStyles, display: "none" });
   };
+
   const handleEditCancelBtn = () => {
     setEBStyles({ ...eBStyles, display: "none" });
   };
+
   useEffect(() => {
     console.log(taskList);
   }, [taskList]);
@@ -78,7 +53,7 @@ const TodoTask = ({ taskName, taskList, setTaskList }) => {
       <div>
         <input
           onChange={handleCheckbox}
-          checked={findState.state}
+          checked={taskState}
           type="checkbox"
           name="checkTask"
           id="checkTask"
