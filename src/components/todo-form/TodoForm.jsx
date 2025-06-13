@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { useEffect } from "react";
 
-const TodoForm = ({ task, setTask, taskList, setTaskList, saveTask }) => {
+const TodoForm = ({ taskList, setTaskList }) => {
+  const [task, setTask] = useState({
+    id: 0,
+    name: "",
+    state: false,
+  });
+
   const { name } = task;
 
   const handleInput = (e) => {

@@ -1,17 +1,11 @@
 import { useState } from "react";
 import { useEffect } from "react";
+
 import TodoForm from "./components/todo-form/TodoForm.jsx";
 
 import TodoTasks from "./components/todo-tasks/TodoTasks.jsx";
 
 const TodoApp = () => {
-  const [task, setTask] = useState({
-    id: 0,
-    name: "",
-    state: false,
-  });
-  console.log(task);
-
   /* Localstorage */
 
   const saveTask = (taskList) => {
@@ -30,15 +24,11 @@ const TodoApp = () => {
     return recoveryStorage ? recoveryStorage : [];
   });
 
+  useEffect(() => {}, [taskList]);
+
   return (
     <>
-      <TodoForm
-        task={task}
-        setTask={setTask}
-        taskList={taskList}
-        setTaskList={setTaskList}
-        saveTask={saveTask}
-      />
+      <TodoForm taskList={taskList} setTaskList={setTaskList} />
 
       <TodoTasks
         task={task}
