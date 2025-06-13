@@ -29,17 +29,16 @@ const TodoForm = ({ taskList, setTaskList }) => {
     if (task.name === "") return;
 
     /* Not the same task name */
-    const sameTask = taskList.some((taskInList) => {
-      const { name } = task;
-      return taskInList.name === name;
-    });
+    // const sameTask = taskList.some((taskInList) => {
+    //   const { name } = task;
+    //   return taskInList.name === name;
+    // });
 
     /* If isn't the same do... */
-    if (!sameTask) {
-      setTaskList(() => [...taskList, task]);
-
-      setTask({ ...task, name: "" });
-    }
+    // if (!sameTask) {
+    // }
+    setTaskList(() => [...taskList, task]);
+    setTask({ ...task, name: "" });
   };
 
   return (
