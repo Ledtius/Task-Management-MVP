@@ -1,5 +1,3 @@
----
-
 ## 📖 The Journey Behind This MVP
 
 Over the last 2 months, I worked on building my first real-world React project: a task management app.
