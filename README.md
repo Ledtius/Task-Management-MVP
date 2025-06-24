@@ -1,28 +1,28 @@
-## 📖 The Journey Behind This MVP
+## Todo List - Primer paso hacia un Gestor de Tareas (ReactJS)
 
-Over the last 2 months, I worked on building my first real-world React project: a task management app.
+Este proyecto es una aplicación básica de tipo **Todo List** desarrollada en React. Fue creado como parte de mi proceso de aprendizaje y preparación para un proyecto más completo: un **Gestor de Tareas**.
 
-At first, I completed the design and styles. But when I started implementing the logic, I struggled. The problem?  
-- I didn't have a solid foundation in modern JavaScript (spread operator, array/object methods, etc.)
-- I was just starting to learn React and hadn’t fully internalized key concepts like:
-  - Hooks (`useState`, `useEffect`)
-  - Props and component communication
-  - Lifting state up
-  - Handling events
-  - Controlled inputs
-  - Basic project structure
-
-But I **did not give up**. I studied, practiced, broke the code many times — and rebuilt it.
-
-Today, this MVP represents not just a small project — it represents the foundation of my growth as a frontend developer.
+El objetivo principal fue afianzar los fundamentos esenciales de React y mejorar mi lógica con JavaScript moderno.
 
 ---
 
-## 📂 Previous Version
+### Conceptos aplicados
 
-You can also see my early steps and struggles in React in my first repository:  
-[Task Management - First Steps in React and JS Exercises](https://github.com/Ledtius/Task-Management-First-Steps-in-React-and-JS-Exercises)
+- Hooks (`useState`, `useEffect`)
+- Props y levantamiento del estado (*lifting state up*)
+- Manejo de eventos
+- Inputs controlados
+- Manipulación de arrays y objetos
+- Estructura de carpetas modular
 
 ---
 
-✅ **If I could do it, you can too. Keep going.**
+**Proyecto final (Task Manager completo):**  
+
+👉 [Task-Management-React](https://github.com/Ledtius/Task-Management-React)
+
+---
+
+
+
+
